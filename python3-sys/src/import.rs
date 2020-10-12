@@ -62,11 +62,10 @@ extern "C" {
     pub fn PyImport_GetImporter(path: *mut PyObject) -> *mut PyObject;
     pub fn PyImport_Import(name: *mut PyObject) -> *mut PyObject;
     pub fn PyImport_ReloadModule(m: *mut PyObject) -> *mut PyObject;
+    #[cfg(not(Py_3_9))]
     pub fn PyImport_Cleanup() -> ();
     pub fn PyImport_ImportFrozenModuleObject(name: *mut PyObject) -> c_int;
     pub fn PyImport_ImportFrozenModule(name: *const c_char) -> c_int;
-
-    // pub static mut PyNullImporter_Type: PyTypeObject; -- does not actually exist in shared library
 
     pub fn PyImport_AppendInittab(
         name: *const c_char,

@@ -42,6 +42,8 @@ extern "C" {
         arg2: *const c_char,
         arg3: *const c_char,
     ) -> c_int;
+    #[cfg(Py_3_9)]
+    pub fn PyModule_AddType(module: *mut PyObject, ty: *mut PyTypeObject) -> c_int;
     #[cfg(Py_3_5)]
     pub fn PyModule_SetDocString(arg1: *mut PyObject, arg2: *const c_char) -> c_int;
     #[cfg(Py_3_5)]
